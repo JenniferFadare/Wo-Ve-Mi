@@ -1,3 +1,6 @@
-h1 {
-    color: tomato;
+/* w3 CSS overrides */
+
+.center-block-element {
+    float: none;
+    margin: 0 auto;
 }

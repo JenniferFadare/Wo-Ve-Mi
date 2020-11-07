@@ -8,50 +8,137 @@
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
   </head>
   <body>
-    <header>
-      <a href="#">
-        <h1>Wo-Ve-Mi</h1>
-      </a>
+    <header class="w3-margin-bottom">
+      <div class="w3-bar w3-border w3-light-grey">
+        <a href="#" class="w3-bar-item w3-button"
+          ><h2 class="w3-xlarge">Wo-Ve-Mi</h2></a
+        >
+        <a href="#" class="w3-bar-item w3-button w3-right w3-hover-green"
+          ><h2 class="w3-large">About Us</h2></a
+        >
+        <a href="#" class="w3-bar-item w3-button w3-right w3-hover-blue"
+          ><h2 class="w3-large">Contact Us</h2></a
+        >
+      </div>
     </header>
-    <div id="search"></div>
-    <div class="w3-container" id="results">
-      <div id="map">
+    <!-- container for search form -- column -->
+    <section class="w3-container w3-col w3-margin-bottom" id="search">
+      <div class="w3-card-4">
+        <div class="w3-container w3-dark-grey w3-margin-bottom">
+          <h2>What are you looking for?</h2>
+        </div>
+
+        <form class="w3-container">
+          <div class="w3-container w3-margin-bottom">
+            <input class="w3-check w3-margin-right" type="checkbox" />
+            <label>Women-Owned</label>
+          </div>
+          <div class="w3-container w3-margin-bottom">
+            <input class="w3-check w3-margin-right" type="checkbox" />
+            <label>Veteran-Owned</label>
+          </div>
+          <div class="w3-container w3-margin-bottom">
+            <input class="w3-check w3-margin-right" type="checkbox" />
+            <label>Minority-Owned</label>
+          </div>
+
+          <div class="w3-container w3-center w3-margin-top w3-margin-bottom">
+            <label>Zip-Code</label>
+            <input class="w3-input w3-row" type="text" />
+          </div>
+          <div class="w3-container w3-center w3-margin-bottom">
+            <button class="w3-btn w3-blue-grey">Register</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- container for search results -- column -->
+    <section class="w3-container w3-col" id="results">
+      <!-- container for the map -->
+      <div class="w3-row w3-margin-bottom" id="map">
         <!-- Mapbox GL JS will put map inside this div -->
+        <div class="w3-col s12 center-block-element">
+          <img
+            style="width: 100%"
+            src="https://picsum.photos/300/250"
+            alt="Map placeholder"
+          />
+        </div>
       </div>
 
-      <!-- example card -->
-      <div class="w3-card-4" style="width:33%">
+      <!-- container for cards -->
+      <article class="w3-row w3-margin-bottom">
+        <!-- example card -->
+        <section class="w3-card-4 w3-col s10 center-block-element w3-margin-bottom">
           <header class="w3-container w3-light-grey">
-              <h3>Example</h3>
+            <h3>Example</h3>
           </header>
           <div class="w3-container">
-              <p>Category</p>
-              <hr>
-              <img src="https://picsum.photos/60" alt="icon/img" class="w3-left w3-circle w3-margin-right w3-margin-bottom">
-              <p>
-                  Landscaping services
-                  <br />
-                  12345 Decker Ln.
-                  <br />
-                  Austin, TX
-                  <br />
-                  78724
-              </p>
+            <p>Category</p>
+            <hr />
+            <img
+              src="https://picsum.photos/60"
+              alt="icon/img"
+              class="w3-left w3-circle w3-margin-right w3-margin-bottom"
+            />
+            <p>
+              Landscaping services
+              <br />
+              12345 Decker Ln.
+              <br />
+              Austin, TX
+              <br />
+              78724
+            </p>
           </div>
-          <button class="w3-button w3-block w3-dark-grey"> button that does something </button>
-      </div>
-    </div>
-    <div id="mission">
+          <button class="w3-button w3-block w3-dark-grey">
+            button that does something
+          </button>
+        </section>
+
+        <!-- example card -->
+        <section class="w3-card-4 w3-col s10 center-block-element w3-margin-bottom">
+            <header class="w3-container w3-light-grey">
+              <h3>Example</h3>
+            </header>
+            <div class="w3-container">
+              <p>Category</p>
+              <hr />
+              <img
+                src="https://picsum.photos/60"
+                alt="icon/img"
+                class="w3-left w3-circle w3-margin-right w3-margin-bottom"
+              />
+              <p>
+                Landscaping services
+                <br />
+                12345 Decker Ln.
+                <br />
+                Austin, TX
+                <br />
+                78724
+              </p>
+            </div>
+            <button class="w3-button w3-block w3-dark-grey">
+              button that does something
+            </button>
+        </section>
+          
+      </article>
+
+    </section>
+    
+    <section id="mission">
       <p>
         <!-- mission statement -->
       </p>
-    </div>
+    </section>
     <footer>
-        🔧 Built by Team Formul8rs 
+      <h2>🔧 Built by Team Formul8rs</h2>
     </footer>
     <!-- Script links -->
 
     <script src="./Assets/JS/script.js"></script>
-
   </body>
 </html>
