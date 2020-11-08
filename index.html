@@ -4,16 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our First Project</title>
-
+    <!-- w3.CSS framework -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!-- our style sheet -->
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
   </head>
   <body>
+    <!-- header -->
     <header class="w3-margin-bottom">
       <div class="w3-bar w3-border w3-light-grey">
+        <!-- branding -->
         <a href="#" class="w3-bar-item w3-button"
           ><h2 class="w3-large">Wo-Ve-Mi</h2></a
         >
+        <!-- navigation -->
         <a href="#" class="w3-bar-item w3-button w3-right w3-hover-green"
           ><h2 class="w3-medium">About Us</h2></a
         >
@@ -22,74 +26,103 @@
         >
       </div>
     </header>
-    <!-- container for search form -- col -->
-    <section class="w3-container w3-col s12 w3-margin-bottom" id="search">
-      <div class="w3-card-4 w3-row">
+    <main>
+      <!-- container for search form -- col -->
+      <section class="w3-container w3-col s12 w3-margin-bottom" id="search">
+        <!-- container for form -->
+        <div class="w3-card-4 w3-row">
+          <!-- form header -->
+          <div class="w3-container w3-dark-grey w3-margin-bottom">
+            <h2 class="w3-large">What are you looking for?</h2>
+          </div>
+          <!-- form element -->
+          <form class="w3-container w3-row w3-padding" id="search-form">
+            <!-- row for buttons -->
+            <div class="w3-row w3-center">
+              <!-- container for woman-owned -->
+              <div class="w3-container w3-col s12 m4 w3-margin-bottom">
+                <!-- checkbox -->
+                <input
+                  class="w3-check w3-margin-right"
+                  type="checkbox"
+                  value="womanOwned"
+                />
+                <label>Women-Owned</label>
+              </div>
+              <!-- container for veteran-owned -->
+              <div class="w3-container w3-col s12 m4 w3-margin-bottom">
+                <!-- checkbox -->
+                <input
+                  class="w3-check w3-margin-right"
+                  type="checkbox"
+                  value="veteranOwned"
+                />
+                <label>Veteran-Owned</label>
+              </div>
+              <!-- container for minority-owned -->
+              <div class="w3-container w3-col s12 m4 w3-margin-bottom">
+                <!-- checkbox -->
+                <input
+                  class="w3-check w3-margin-right"
+                  type="checkbox"
+                  value="minorityOwned"
+                />
+                <label>Minority-Owned</label>
+              </div>
+            </div>
 
-        <div class="w3-container w3-dark-grey w3-margin-bottom">
-          <h2 class="w3-large">What are you looking for?</h2>
+            <!-- row for zip code and submit button -->
+            <div class="w3-row w3-center">
+              <!-- container for zip code input -->
+              <div
+                class="w3-container w3-col l9 w3-stretch w3-margin-top w3-margin-right w3-margin-bottom"
+              >
+                <label>Zip-Code</label>
+                <!-- input -->
+                <input class="w3-input" type="text" id="zip-code" />
+              </div>
+              <!-- container for submit button -->
+              <div class="w3-col l3 w3-auto w3-margin-top w3-margin-bottom">
+                <!-- button -->
+                <button class="w3-btn w3-col w3-margin-top w3-blue-grey">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
+      </section>
 
-        <form class="w3-container w3-row w3-padding" id="search-form">
+      <!-- container for the map -- col -->
+      <section
+        class="w3-col s12 l6 w3-padding-small w3-margin-top w3-margin-bottom"
+        id="map"
+      >
+        <!-- Mapbox GL JS will put map inside this div -->
 
-          <!-- row for buttons -->
-          <div class="w3-row w3-center">
-
-            <div class="w3-container w3-col s12 m4 w3-margin-bottom" >
-              <input class="w3-check w3-margin-right" type="checkbox" value="womanOwned" />
-              <label>Women-Owned</label>
-            </div>
-            <div class="w3-container w3-col s12 m4 w3-margin-bottom">
-              <input class="w3-check w3-margin-right" type="checkbox" value="veteranOwned"/>
-              <label>Veteran-Owned</label>
-            </div>
-            <div class="w3-container w3-col s12 m4 w3-margin-bottom">
-              <input class="w3-check w3-margin-right" type="checkbox" value="minorityOwned"/>
-              <label>Minority-Owned</label>
-            </div>
-          </div>
-
-          <!-- row for zip code and submit button -->
-          <div class="w3-row w3-center">
-            <div class="w3-container w3-col l9 w3-stretch w3-margin-top w3-margin-right w3-margin-bottom">
-              <label>Zip-Code</label>
-              <input class="w3-input" type="text" id="zip-code"/>
-            </div>
-            <div class="w3-col l3 w3-auto w3-margin-top w3-margin-bottom">
-              <button class="w3-btn w3-col w3-margin-top w3-blue-grey">Submit</button>
-            </div>
-          </div>
-
-        </form>
-      </div>
-    </section>
-
-        <!-- container for the map -- col -->
-        <section class="w3-col s12 l6 w3-padding-small w3-margin-top w3-margin-bottom" id="map">
-          <!-- Mapbox GL JS will put map inside this div -->
-  
-          <!-- placeholder start -->
-          <div class="w3-row center-block-element">
-            <img
-              style="width: 100%"
-              src="https://picsum.photos/300/250"
-              alt="Map placeholder"
-            />
-          </div>
-          <!-- placeholder end -->
-  
-        </section>
+        <!-- placeholder start -->
+        <div class="w3-row center-block-element">
+          <img
+            style="width: 100%"
+            src="https://picsum.photos/300/250"
+            alt="Map placeholder"
+          />
+        </div>
+        <!-- placeholder end -->
+      </section>
 
       <!-- container for search result cards -- col -->
       <section class="w3-col s12 l6 w3-padding w3-margin-bottom w3-margin-top">
-
         <!-- example card start -->
+        <!-- card container -->
         <article class="w3-card-4 w3-row w3-margin-bottom">
           <header class="w3-container w3-light-grey">
-            <h3 class="w3-medium">Example</h3>
+            <!-- element for results[i].legalBusinessName -->
+            <h3 class="w3-medium">legalBusinessName</h3>
           </header>
           <div class="w3-container">
-            <p class="w3-small">Category</p>
+            <!-- element for  -->
+            <p class="w3-small">info</p>
             <hr />
             <img
               src="https://picsum.photos/60"
@@ -97,8 +130,6 @@
               class="w3-left w3-circle w3-margin-right w3-margin-bottom"
             />
             <p class="w3-small">
-              Landscaping services
-              <br />
               12345 Decker Ln.
               <br />
               Austin, TX
@@ -107,7 +138,7 @@
             </p>
           </div>
           <button class="w3-button w3-block w3-dark-grey">
-             button that does something
+            button that does something
           </button>
         </article>
 
@@ -135,23 +166,17 @@
             </p>
           </div>
           <button class="w3-button w3-block w3-dark-grey">
-             button that does something
+            button that does something
           </button>
         </article>
+      </section>
 
-        </section>
-
-
-          
-      </article>
-
-    </section>
-    
-    <section id="mission">
-      <p>
-        <!-- mission statement -->
-      </p>
-    </section>
+      <section id="mission">
+        <p>
+          <!-- mission statement -->
+        </p>
+      </section>
+    </main>
     <footer class="w3-row">
       <h2 class="w3-large">🔧 Built by Team Formul8rs</h2>
     </footer>
