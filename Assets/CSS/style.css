@@ -16,9 +16,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-header {
-    background-image: url(../images/Screen\ Shot\ 2020-11-07\ at\ 5.49.54\ PM.png);
-}
+#menu-section {
+    background-image: url(../images/wovemiBanner.png);
 
 /* w3 CSS overrides */
 
