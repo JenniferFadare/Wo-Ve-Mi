@@ -1,7 +1,45 @@
+# 💃🏽 Wo - 🎖 Ve - 🤝🏽 Mi
 
-# My best skill is programming.
-=======
-# project_1
+## A search engine highlighting Women, Veteran and Minority-Owned businesses
 
-# JEN'S test
+## Built With:
 
+- HTML
+- JavaScript
+- CSS
+
+### and the following libraries:
+
+- Jquery
+- Mapbox GL JS
+- w3.CSS
+
+## Deployed Project:
+
+[Link to deployed project!](https://jenniferfadare.github.io/project_1/)
+
+## How it looks:
+
+![Screenshot of deployed project](./Assets/images/screenshot.png)
+
+## Team Formul8rs
+
+### [Garret Cox](https://github.com/gacx89)
+
+### [Jennifer Fadare](https://github.com/JenniferFadare)
+
+### [Lafon Clark](https://github.com/blackutcoffee)
+
+### [Obinna Ezekwe](https://github.com/oezekwe)
+
+### [Christian Krantz](https://github.com/ChristianKrantz11)
+
+### [Casey Deriso](https://github.com/CaseyDeriso)
+
+## Milestones:
+
+### Casey:
+
+## I struggled through learning a new CSS framework, but it was worth it.
+
+## After learning the framework, I had fun manipulating elements to stack neatly on different screen sizes.
