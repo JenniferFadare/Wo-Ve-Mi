@@ -18,6 +18,17 @@ body {
 
 #menu-section {
     background-image: url(../images/wovemiBanner.png);
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-size: 100%;
+}
+
+#map {
+    width: 600px;
+    height: 600px;
+}
 
 /* w3 CSS overrides */
 
