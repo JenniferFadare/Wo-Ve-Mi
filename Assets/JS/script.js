@@ -21,7 +21,6 @@ var displayMap = function (zipCode, samResults) {
             center: regionLngLat,
             zoom: 9, // starting zoom
           });
-
           // Loop through object holding list of businesses that was passed to function and make mapbox API call to get longitute/latitude of each business
           for (var i = 0; i <= samResults.results.length; i++) {
             fetch(
@@ -77,7 +76,7 @@ var getBusinesses = function (zipCode) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
+          displayBusiness(data)
           displayMap(zipCode, data);
         });
       } else {
@@ -91,7 +90,13 @@ var getBusinesses = function (zipCode) {
 };
 
 // Update HTML elements and display businesses in cards along with creating map
-var displayBusiness = function () {};
+var displayBusiness = function (data) {
+  console.log(data);
+  for (i = 0; i < data.results.length; i++) {
+    console.log(data.results[i])
+  }
+
+};
 
 $("#search-form").submit(function (event) {
   getBusinesses($("#zip-code").val());
