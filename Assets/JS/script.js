@@ -19,10 +19,11 @@ var displayMap = function (zipCode, samResults) {
             container: "map",
             style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
             center: regionLngLat,
-            zoom: 9, // starting zoom
+            zoom: 14, // starting zoom
           });
           // Loop through object holding list of businesses that was passed to function and make mapbox API call to get longitute/latitude of each business
-          for (var i = 0; i <= samResults.results.length; i++) {
+          for (var i = 0; i < samResults.results.length; i++) {
+            console.log(samResults.results[i]);
             fetch(
               "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
                 samResults.results[i].samAddress.line1 +
