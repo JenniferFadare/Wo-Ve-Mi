@@ -18,12 +18,10 @@ var displayMap = function (zipCode, samResults) {
             container: "map",
             style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
             center: regionLngLat,
-            zoom: 14, // starting zoom
+            zoom: 12, // starting zoom
           });
-
           // Loop through object holding list of businesses that was passed to function and make mapbox API call to get longitute/latitude of each business
           for (var i = 0; i < samResults.results.length; i++) {
-            console.log(samResults.results[i]);
             fetch(
               "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
                 samResults.results[i].samAddress.line1 +
@@ -77,7 +75,7 @@ var getBusinesses = function (zipCode) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
+          displayBusiness(data);
           displayMap(zipCode, data);
         });
       } else {
@@ -91,7 +89,56 @@ var getBusinesses = function (zipCode) {
 };
 
 // Update HTML elements and display businesses in cards along with creating map
-var displayBusiness = function () {};
+var displayBusiness = function (data) {
+  for (i = 0; i < data.results.length || i == 40; i++) {
+    let cardContainer = document.createElement("article");
+    cardContainer.classList = "w3-col s12 l6 w3-padding";
+
+    let card = document.createElement("div");
+    card.classList = "w3-card-4 w-3-margin-bottom";
+
+    let cardHeader = document.createElement("header");
+    cardHeader.classList = "w3-container w3-dark-grey";
+
+    let headerText = document.createElement("h3");
+    let name = data.results[i].legalBusinessName;
+    headerText.innerHTML = name;
+    cardHeader.appendChild(headerText);
+    // append header to card
+    card.appendChild(cardHeader);
+
+    let cardBody = document.createElement("address");
+    cardBody.classList = "w3-container w3-sand";
+
+    let cardImage = document.createElement("img");
+    cardImage.setAttribute("src", "https://picsum.photos/60");
+    cardImage.setAttribute("alt", "Icon");
+    cardImage.classList =
+      "w3-left w3-circle w3-margin-top w3-margin-right w3-margin-bottom";
+    // cardBody.appendChild(cardImage);
+
+    let address = document.createElement("p");
+    address.classList = "w3-small w3-margin-top w3-margin-bottom w3-center";
+    address.innerHTML = `${
+      data.results[i].samAddress.line1
+    } <br /> ${data.results[i].samAddress.city.toLowerCase()}, ${
+      data.results[i].samAddress.stateOrProvince
+    } <br /> ${data.results[i].samAddress.zip}`;
+    cardBody.appendChild(address);
+    // append body to card
+    card.appendChild(cardBody);
+
+    let button = document.createElement("button");
+    button.classList = "w3-button w3-block w3-amber";
+    button.innerHTML = "click me";
+    // append button to card
+    card.appendChild(button);
+    // append the new card to the card container
+    cardContainer.appendChild(card);
+
+    $(cardContainer).insertAfter($("#map"));
+  }
+};
 
 $("#search-form").submit(function (event) {
   if (
