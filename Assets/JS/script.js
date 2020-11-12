@@ -117,9 +117,12 @@ var getBusinesses = function (zipCode) {
 
 // Update HTML elements and display businesses in cards along with creating map
 var displayBusiness = function (data) {
+  // clear any previous cards
+  $(".cardCont").remove();
+
   for (i = 0; i < data.results.length || i == 40; i++) {
     let cardContainer = document.createElement("article");
-    cardContainer.classList = "w3-col s12 l6 w3-padding";
+    cardContainer.classList = "w3-col s12 l6 w3-padding cardCont";
 
     let card = document.createElement("div");
     card.classList = "w3-card-4 w-3-margin-bottom";
@@ -134,7 +137,7 @@ var displayBusiness = function (data) {
     // append header to card
     card.appendChild(cardHeader);
 
-    let cardBody = document.createElement("address");
+    let cardBody = document.createElement("div");
     cardBody.classList = "w3-container w3-sand";
 
     let cardImage = document.createElement("img");
