@@ -9,7 +9,6 @@ var displayMap = function (zipCode, samResults) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (region) {
-          
           var regionLngLat = region.features[0].center; // Variable holding the longitude/latitude of supplied zipcode
 
           // Create mapbox that is centered on zipcode
@@ -44,7 +43,7 @@ var displayMap = function (zipCode, samResults) {
               }
             });
           }
-        }); 
+        });
       } else {
         alert("Error: " + response.statusText); // To Do: Change to modal
       }
@@ -95,6 +94,15 @@ var getBusinesses = function (zipCode) {
 var displayBusiness = function () {};
 
 $("#search-form").submit(function (event) {
-  getBusinesses($("#zip-code").val());
+  if (
+    $("#search-form input[type=checkbox]:checked").length &&
+    $("#zip-code").val()
+  ) {
+    getBusinesses($("#zip-code").val());
+  } else {
+    alert(
+      "Error: Make sure at least one checkbox is selected and zip code has been entered!"
+    ); // To Do: Change to modal
+  }
   event.preventDefault();
 });
