@@ -202,6 +202,7 @@ var isZipCode = function (str) {
   return regexp.test(str);
 };
 
+// display modal str is error text for p element inside card
 var displayModal = function (str) {
   $("#error-text").text(str);
   $("#errorModal").toggle();
