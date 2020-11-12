@@ -1,3 +1,7 @@
+var coordinates = [];
+var currentMap;
+var markers = [];
+
 //Function that centers map on entered zipcode and adds markers for each business
 var displayMap = function (zipCode, samResults) {
   // Fetch mapbox location using zipcode
@@ -20,12 +24,17 @@ var displayMap = function (zipCode, samResults) {
             center: regionLngLat,
             zoom: 12, // starting zoom
           });
+
+          map.addControl(new mapboxgl.NavigationControl());
+
+          currentMap = map;
           // Loop through object holding list of businesses that was passed to function and make mapbox API call to get longitute/latitude of each business
           for (var i = 0; i < samResults.results.length; i++) {
             fetch(
               "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
-                samResults.results[i].samAddress.line1 +
-                " " +
+                encodeURIComponent(
+                  samResults.results[i].samAddress.line1 + " "
+                ) +
                 zipCode +
                 ".json?country=US&proximity=" +
                 regionLngLat +
@@ -34,9 +43,7 @@ var displayMap = function (zipCode, samResults) {
               if (response.ok) {
                 response.json().then(function (data) {
                   // Create marker located at long/lat of business. Add to map
-                  var marker = new mapboxgl.Marker()
-                    .setLngLat(data.features[0].center)
-                    .addTo(map);
+                  coordinates.push(data.features[0].center);
                 });
               }
             });
@@ -49,6 +56,24 @@ var displayMap = function (zipCode, samResults) {
     .catch(function (error) {
       console.log("Unable to connect to database"); // To Do: Change to modal
     });
+
+  // Allow enough time for fetch request for coordinates to finish, then create markers.
+  setTimeout(createMarkers, 1000, samResults);
+};
+
+var createMarkers = function (data) {
+  // Loop thru list of coordinates and draw marker at each location with address as pop-up
+  for (var i = 0; i < coordinates.length; i++) {
+    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
+      data.results[i].legalBusinessName
+    );
+    var marker = new mapboxgl.Marker()
+      .setLngLat(coordinates[i])
+      .setPopup(popup)
+      .addTo(currentMap);
+
+    markers.push(marker);
+  }
 };
 
 // Function that makes request to SAM API and returns JSON-formatted object containing requested category of business
@@ -132,8 +157,10 @@ var displayBusiness = function (data) {
     card.appendChild(cardBody);
 
     let button = document.createElement("button");
-    button.classList = "w3-button w3-block w3-amber";
+    button.classList = "w3-button w3-block w3-amber card-button";
     button.innerHTML = "click me";
+    button.setAttribute("data-id", i);
+    button.setAttribute("onclick", "location.href='#map'");
     // append button to card
     card.appendChild(button);
     // append the new card to the card container
@@ -143,7 +170,25 @@ var displayBusiness = function (data) {
   }
 };
 
+$(document).on("click", ".card-button", function () {
+  // Jump to location of business whose card button was clicked
+  currentMap.jumpTo({ center: coordinates[$(this).attr("data-id")], zoom: 15 });
+
+  // Check if pop-up for map marker is not open. If not, open it.
+  if (!markers[$(this).attr("data-id")].getPopup().isOpen()) {
+    markers[$(this).attr("data-id")].togglePopup();
+  }
+
+  // Loop thru array of markers and close all the other marker pop-ups besides the one for the marker that was just clicked
+  for (var i = 0; i < markers.length; i++) {
+    if (markers[i].getPopup().isOpen() && i != $(this).attr("data-id")) {
+      markers[i].togglePopup();
+    }
+  }
+});
+
 $("#search-form").submit(function (event) {
+  // Check that the list of checked checkboxes includes at least one element (i.e., a checkbox has been checked). If so, call getBusinesses() function. Otherwise alert user to error.
   if (
     $("#search-form input[type=checkbox]:checked").length &&
     $("#zip-code").val()
