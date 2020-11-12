@@ -54,11 +54,11 @@ var displayMap = function (zipCode, samResults) {
           }
         });
       } else {
-        alert("Error: " + response.statusText); // To Do: Change to modal
+        displayModal("Error: " + response.statusText);
       }
     })
     .catch(function (error) {
-      console.log("Unable to connect to database"); // To Do: Change to modal
+      displayModal("Unable to connect to database");
     });
 
   // Allow enough time for fetch request for coordinates to finish, then create markers.
@@ -114,14 +114,17 @@ var getBusinesses = function (zipCode) {
         response.json().then(function (data) {
           displayBusiness(data);
           displayMap(zipCode, data);
+          if (data.results.length == 0) {
+            displayModal("No businesses found.");
+          }
         });
       } else {
-        alert("Error: " + response.statusText);
+        displayModal("Error: " + response.statusText);
       }
     })
     .catch(function (error) {
-      // Alert user if fetch fails. This will be changed to modal. Disconnect ethernet/wifi adapter in order to test. Change to modal.
-      console.log("Unable to connect to database");
+      // display modal if fetch fails. Disconnect ethernet/wifi adapter in order to test.
+      displayModal("Unable to connect to database");
     });
 };
 
@@ -189,6 +192,11 @@ var isZipCode = function (str) {
   return regexp.test(str);
 };
 
+var displayModal = function (str) {
+  $("#error-text").text(str);
+  $("#errorModal").toggle();
+};
+
 $(document).on("click", ".card-button", function () {
   // Jump to location of business whose card button was clicked
   currentMap.jumpTo({ center: coordinates[$(this).attr("data-id")], zoom: 15 });
@@ -210,7 +218,7 @@ $("#search-form").submit(function (event) {
   var zipcode = $("#zip-code").val();
 
   if (!isZipCode(zipcode)) {
-    alert("Error: Please enter valid zip code");
+    displayModal("Error: Please enter valid zip code");
     return false;
   }
 
@@ -218,14 +226,15 @@ $("#search-form").submit(function (event) {
   if ($("#search-form input[type=checkbox]:checked").length && zipcode) {
     getBusinesses(zipcode);
   } else {
-    alert(
+    displayModal(
       "Error: Make sure at least one checkbox is selected and zip code has been entered!"
-    ); // To Do: Change to modal
+    );
     return false;
   }
   event.preventDefault();
 });
 
+// when document is first loaded, clear the past search variable, get past search from local storage and call it
 $(document).ready(function () {
   pastSearch = [];
 
@@ -247,5 +256,6 @@ $(document).ready(function () {
       $(this).prop("checked", true);
     }
   });
+  $("#zip-code").val(pastSearch[0]);
   getBusinesses(pastSearch[0]);
 });

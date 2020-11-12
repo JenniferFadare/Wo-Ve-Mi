@@ -12,12 +12,14 @@
   --font-color: navy;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+#header {
+    width: 100%;
+    background-image: url(../images/wovemiBanner.png);
+    background-repeat: no-repeat;
 }
 
-#header {
-  background-image: url(../images/Screen\ Shot\ 2020-11-07\ at\ 5.49.54\ PM.png);
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* w3 CSS overrides */
