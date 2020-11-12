@@ -172,6 +172,14 @@ var displayBusiness = function (data) {
   }
 };
 
+// Check if number is zipcode (i.e., between 00000 and 99999)
+var isZipCode = function (str) {
+  regexp = /^[0-9]{5}?$/;
+  
+  return (regexp.test(str));
+          
+};
+
 $(document).on("click", ".card-button", function () {
   // Jump to location of business whose card button was clicked
   currentMap.jumpTo({ center: coordinates[$(this).attr("data-id")], zoom: 15 });
@@ -190,16 +198,26 @@ $(document).on("click", ".card-button", function () {
 });
 
 $("#search-form").submit(function (event) {
+
+  var zipcode = $("#zip-code").val();
+
+  if (!isZipCode(zipcode)){
+    alert("Error: Please enter valid zip code");
+    return false;
+  }
+
   // Check that the list of checked checkboxes includes at least one element (i.e., a checkbox has been checked). If so, call getBusinesses() function. Otherwise alert user to error.
   if (
     $("#search-form input[type=checkbox]:checked").length &&
-    $("#zip-code").val()
+    zipcode
   ) {
-    getBusinesses($("#zip-code").val());
+    getBusinesses(zipcode);
   } else {
     alert(
       "Error: Make sure at least one checkbox is selected and zip code has been entered!"
     ); // To Do: Change to modal
+    return false;
   }
   event.preventDefault();
 });
+
