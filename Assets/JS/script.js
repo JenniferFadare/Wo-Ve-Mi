@@ -139,15 +139,26 @@ var displayBusiness = function (data) {
     let card = document.createElement("div");
     card.classList = "w3-card-4 w-3-margin-bottom";
 
+    let headerWrapper = document.createElement("a")
+    headerWrapper.setAttribute("href", `https://www.google.com/search?q=${data.results[i].legalBusinessName}`)
+    headerWrapper.setAttribute("target", "_blank")
+
+
     let cardHeader = document.createElement("header");
-    cardHeader.classList = "w3-container w3-dark-grey";
+    cardHeader.classList = "w3-container w3-dark-grey w3-hover-gray";
+
+
 
     let headerText = document.createElement("h3");
     let name = data.results[i].legalBusinessName;
     headerText.innerHTML = name;
+    headerText.classList = "w3-xlarge"
+
     cardHeader.appendChild(headerText);
+    headerWrapper.appendChild(cardHeader);
+
     // append header to card
-    card.appendChild(cardHeader);
+    card.appendChild(headerWrapper);
 
     let cardBody = document.createElement("div");
     cardBody.classList = "w3-container w3-sand";
@@ -172,7 +183,7 @@ var displayBusiness = function (data) {
 
     let button = document.createElement("button");
     button.classList = "w3-button w3-block w3-amber card-button";
-    button.innerHTML = "click me";
+    button.innerHTML = "Show on Map";
     button.setAttribute("data-id", i);
     button.setAttribute("onclick", "location.href='#map'");
     // append button to card
