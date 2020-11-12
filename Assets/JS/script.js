@@ -1,5 +1,3 @@
-var pastSearch = [];
-
 var coordinates = [];
 var currentMap;
 var markers = [];
@@ -112,10 +110,11 @@ var getBusinesses = function (zipCode) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayBusiness(data);
-          displayMap(zipCode, data);
           if (data.results.length == 0) {
             displayModal("No businesses found.");
+          } else {
+            displayBusiness(data);
+            displayMap(zipCode, data);
           }
         });
       } else {
@@ -140,15 +139,26 @@ var displayBusiness = function (data) {
     let card = document.createElement("div");
     card.classList = "w3-card-4 w-3-margin-bottom";
 
+    let headerWrapper = document.createElement("a")
+    headerWrapper.setAttribute("href", `https://www.google.com/search?q=${data.results[i].legalBusinessName}`)
+    headerWrapper.setAttribute("target", "_blank")
+
+
     let cardHeader = document.createElement("header");
-    cardHeader.classList = "w3-container w3-dark-grey";
+    cardHeader.classList = "w3-container w3-dark-grey w3-hover-gray";
+
+
 
     let headerText = document.createElement("h3");
     let name = data.results[i].legalBusinessName;
     headerText.innerHTML = name;
+    headerText.classList = "w3-xlarge"
+
     cardHeader.appendChild(headerText);
+    headerWrapper.appendChild(cardHeader);
+
     // append header to card
-    card.appendChild(cardHeader);
+    card.appendChild(headerWrapper);
 
     let cardBody = document.createElement("div");
     cardBody.classList = "w3-container w3-sand";
@@ -173,7 +183,7 @@ var displayBusiness = function (data) {
 
     let button = document.createElement("button");
     button.classList = "w3-button w3-block w3-amber card-button";
-    button.innerHTML = "click me";
+    button.innerHTML = "Show on Map";
     button.setAttribute("data-id", i);
     button.setAttribute("onclick", "location.href='#map'");
     // append button to card
@@ -236,9 +246,9 @@ $("#search-form").submit(function (event) {
 
 // when document is first loaded, clear the past search variable, get past search from local storage and call it
 $(document).ready(function () {
-  pastSearch = [];
+  let pastSearch = [];
 
-  if (localStorage["zip"]) {
+  if (isZipCode(localStorage["zip"])) {
     pastSearch.push(localStorage.getItem("zip"));
     if (localStorage["womanOwned"] == "checked") {
       pastSearch.push("womanOwned");
@@ -249,13 +259,15 @@ $(document).ready(function () {
     if (localStorage["minorityOwned"] == "checked") {
       pastSearch.push("minorityOwned");
     }
-  }
 
-  $(":checkbox").each(function () {
-    if (pastSearch.includes($(this).val())) {
-      $(this).prop("checked", true);
-    }
-  });
-  $("#zip-code").val(pastSearch[0]);
-  getBusinesses(pastSearch[0]);
+    $(":checkbox").each(function () {
+      if (pastSearch.includes($(this).val())) {
+        $(this).prop("checked", true);
+      }
+    });
+    $("#zip-code").val(pastSearch[0]);
+    getBusinesses(pastSearch[0]);
+  } else {
+    return;
+  }
 });
