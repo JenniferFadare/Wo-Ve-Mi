@@ -1,3 +1,6 @@
+var pastSearch = [];
+
+
 //Function that centers map on entered zipcode and adds markers for each business
 var displayMap = function (zipCode, samResults) {
   // Fetch mapbox location using zipcode
@@ -54,13 +57,15 @@ var displayMap = function (zipCode, samResults) {
 // Function that makes request to SAM API and returns JSON-formatted object containing requested category of business
 var getBusinesses = function (zipCode) {
   var apiOptions = ""; // Variable holding the search terms that will be passed to the SAM API URL
-
   $(":checkbox").each(function () {
     if ($(this).is(":checked")) {
       apiOptions += "+AND+(" + $(this).val() + ":true)";
+      localStorage.setItem($(this).val(), "checked")
+    } else {
+      localStorage.setItem($(this).val(), "notChecked")
     }
   });
-
+  localStorage.setItem("zip", zipCode)
   // API URL with the selected options
   var apiUrl =
     "https://api.data.gov/sam/v3/registrations?qterms=(samAddress.zip:" +
@@ -147,3 +152,31 @@ $("#search-form").submit(function (event) {
   getBusinesses($("#zip-code").val());
   event.preventDefault();
 });
+console.log()
+
+
+$(document).ready(function (){
+  pastSearch = []
+
+  if(localStorage["zip"]) {
+    pastSearch.push( localStorage.getItem("zip"))
+    if (localStorage["womanOwned"] == "checked") {
+      pastSearch.push("womanOwned")
+    }
+    if (localStorage["veteranOwned"] == "checked") {
+      pastSearch.push("veteranOwned")
+    }
+    if (localStorage["minorityOwned"] == "checked") {
+      pastSearch.push("minorityOwned")
+    }  console.log(pastSearch)
+  }
+
+  $(":checkbox").each(function () {
+    // console.log($(this).val)
+    if ( pastSearch.includes( $(this).val() ) ) {
+      $(this).prop('checked', true)
+    }
+
+})
+getBusinesses(pastSearch[0]);
+})
