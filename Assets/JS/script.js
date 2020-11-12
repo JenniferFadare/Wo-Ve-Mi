@@ -1,3 +1,5 @@
+var pastSearch = [];
+
 var coordinates = [];
 var currentMap;
 var markers = [];
@@ -26,6 +28,7 @@ var displayMap = function (zipCode, samResults) {
             zoom: 12, // starting zoom
           });
 
+          map.scrollZoom.disable();
           map.addControl(new mapboxgl.NavigationControl());
 
           currentMap = map;
@@ -81,13 +84,15 @@ var createMarkers = function (data) {
 // Function that makes request to SAM API and returns JSON-formatted object containing requested category of business
 var getBusinesses = function (zipCode) {
   var apiOptions = ""; // Variable holding the search terms that will be passed to the SAM API URL
-
   $(":checkbox").each(function () {
     if ($(this).is(":checked")) {
       apiOptions += "+AND+(" + $(this).val() + ":true)";
+      localStorage.setItem($(this).val(), "checked");
+    } else {
+      localStorage.setItem($(this).val(), "notChecked");
     }
   });
-
+  localStorage.setItem("zip", zipCode);
   // API URL with the selected options
   var apiUrl =
     "https://api.data.gov/sam/v3/registrations?qterms=(samAddress.zip:" +
@@ -175,9 +180,8 @@ var displayBusiness = function (data) {
 // Check if number is zipcode (i.e., between 00000 and 99999)
 var isZipCode = function (str) {
   regexp = /^[0-9]{5}?$/;
-  
-  return (regexp.test(str));
-          
+
+  return regexp.test(str);
 };
 
 $(document).on("click", ".card-button", function () {
@@ -198,19 +202,15 @@ $(document).on("click", ".card-button", function () {
 });
 
 $("#search-form").submit(function (event) {
-
   var zipcode = $("#zip-code").val();
 
-  if (!isZipCode(zipcode)){
+  if (!isZipCode(zipcode)) {
     alert("Error: Please enter valid zip code");
     return false;
   }
 
   // Check that the list of checked checkboxes includes at least one element (i.e., a checkbox has been checked). If so, call getBusinesses() function. Otherwise alert user to error.
-  if (
-    $("#search-form input[type=checkbox]:checked").length &&
-    zipcode
-  ) {
+  if ($("#search-form input[type=checkbox]:checked").length && zipcode) {
     getBusinesses(zipcode);
   } else {
     alert(
@@ -221,3 +221,26 @@ $("#search-form").submit(function (event) {
   event.preventDefault();
 });
 
+$(document).ready(function () {
+  pastSearch = [];
+
+  if (localStorage["zip"]) {
+    pastSearch.push(localStorage.getItem("zip"));
+    if (localStorage["womanOwned"] == "checked") {
+      pastSearch.push("womanOwned");
+    }
+    if (localStorage["veteranOwned"] == "checked") {
+      pastSearch.push("veteranOwned");
+    }
+    if (localStorage["minorityOwned"] == "checked") {
+      pastSearch.push("minorityOwned");
+    }
+  }
+
+  $(":checkbox").each(function () {
+    if (pastSearch.includes($(this).val())) {
+      $(this).prop("checked", true);
+    }
+  });
+  getBusinesses(pastSearch[0]);
+});
