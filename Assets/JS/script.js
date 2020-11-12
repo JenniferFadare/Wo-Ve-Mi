@@ -1,5 +1,3 @@
-var pastSearch = [];
-
 var coordinates = [];
 var currentMap;
 var markers = [];
@@ -112,10 +110,11 @@ var getBusinesses = function (zipCode) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayBusiness(data);
-          displayMap(zipCode, data);
           if (data.results.length == 0) {
             displayModal("No businesses found.");
+          } else {
+            displayBusiness(data);
+            displayMap(zipCode, data);
           }
         });
       } else {
@@ -236,9 +235,9 @@ $("#search-form").submit(function (event) {
 
 // when document is first loaded, clear the past search variable, get past search from local storage and call it
 $(document).ready(function () {
-  pastSearch = [];
+  let pastSearch = [];
 
-  if (localStorage["zip"]) {
+  if (isZipCode(localStorage["zip"])) {
     pastSearch.push(localStorage.getItem("zip"));
     if (localStorage["womanOwned"] == "checked") {
       pastSearch.push("womanOwned");
@@ -249,13 +248,15 @@ $(document).ready(function () {
     if (localStorage["minorityOwned"] == "checked") {
       pastSearch.push("minorityOwned");
     }
-  }
 
-  $(":checkbox").each(function () {
-    if (pastSearch.includes($(this).val())) {
-      $(this).prop("checked", true);
-    }
-  });
-  $("#zip-code").val(pastSearch[0]);
-  getBusinesses(pastSearch[0]);
+    $(":checkbox").each(function () {
+      if (pastSearch.includes($(this).val())) {
+        $(this).prop("checked", true);
+      }
+    });
+    $("#zip-code").val(pastSearch[0]);
+    getBusinesses(pastSearch[0]);
+  } else {
+    return;
+  }
 });
