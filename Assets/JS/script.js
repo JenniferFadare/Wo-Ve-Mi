@@ -4,6 +4,7 @@ var markers = [];
 
 //Function that centers map on entered zipcode and adds markers for each business
 var displayMap = function (zipCode, samResults) {
+  coordinates = [];
   // Fetch mapbox location using zipcode
   fetch(
     "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
@@ -62,6 +63,7 @@ var displayMap = function (zipCode, samResults) {
 };
 
 var createMarkers = function (data) {
+  markers = [];
   // Loop thru list of coordinates and draw marker at each location with address as pop-up
   for (var i = 0; i < coordinates.length; i++) {
     var popup = new mapboxgl.Popup({ offset: 25 }).setText(
