@@ -7,31 +7,36 @@
     <!-- w3.CSS framework -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <!-- Mapbox GL CSS -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <!-- our style sheet -->
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
-    
   </head>
   <body>
     <!-- header -->
-    <header class="w3-margin-bottom">
-      <div class="w3-bar w3-border w3-light-grey" id="menu-section">
+    <header class="w3-margin-bottom" id="header">
+      <div class="w3-bar w3-border w3-light-grey">
         <!-- branding -->
         <a href="#" class="w3-bar-item w3-button"
           ><h2 class="w3-large">Wo-Ve-Mi</h2></a
         >
         <!-- navigation -->
-        <a href="#" class="w3-bar-item w3-button w3-right w3-hover-green"
+        <a href="#about" class="w3-bar-item w3-button w3-right"
           ><h2 class="w3-medium">About Us</h2></a
         >
-        <a href="#" class="w3-bar-item w3-button w3-right w3-hover-blue"
-          ><h2 class="w3-medium">Contact Us</h2></a
+        <a href="#mission" class="w3-bar-item w3-button w3-right"
+          ><h2 class="w3-medium">Mission</h2></a
         >
       </div>
     </header>
     <main>
       <!-- container for search form -- col -->
-      <section class="w3-container w3-col s12 w3-margin-bottom" id="search">
+      <section
+        class="w3-container w3-col s12 w3-margin-bottom w3-white"
+        id="search"
+      >
         <!-- container for form -->
         <div class="w3-card-4 w3-row">
           <!-- form header -->
@@ -78,7 +83,7 @@
             <div class="w3-row w3-center">
               <!-- container for zip code input -->
               <div
-                class="w3-container w3-col l9 w3-stretch w3-margin-top w3-margin-right w3-margin-bottom"
+                class="w3-container w3-col l9 w3-margin-top w3-margin-bottom"
               >
                 <label>Zip-Code</label>
                 <!-- input -->
@@ -98,218 +103,108 @@
 
       <!-- container for the map -- col -->
       <section
-      class="w3-col s12 l6 w3-padding-small w3-margin-top w3-margin-bottom" 
-        id="map"></section>
-      
+        class="w3-col s12 l6 w3-padding-small w3-margin-top w3-margin-bottom w3-light-grey"
+        id="map"
+        style="height: 400px"
+      >
         <!-- Mapbox GL JS will put map inside this div -->
-
-        <!-- placeholder start -->
-        <div class="w3-row center-block-element">
-          <img
-            style="width: 100%"
-            src="https://picsum.photos/300/250"
-            alt="Map placeholder"
-          />
-        </div>
-        <!-- placeholder end -->
       </section>
 
       <!-- example card start -->
-      <!-- container for search result cards -- col -->
-      <article class="w3-col s12 l6 w3-padding">
-        <!-- card container -->
-        <div class="w3-card-4 w3-margin-bottom">
-          <header class="w3-container w3-light-grey">
-            <!-- element for results[i].legalBusinessName -->
-            <h3 class="w3-medium">legalBusinessName</h3>
-          </header>
-          <div class="w3-container">
-            <!-- element for  -->
-            <p class="w3-small">info</p>
-            <hr />
-            <img
-              src="https://picsum.photos/60"
-              alt="icon/img"
-              class="w3-left w3-circle w3-margin-right w3-margin-bottom"
-            />
-            <p class="w3-small">
-              12345 Decker Ln.
-              <br />
-              Austin, TX
-              <br />
-              78724
-            </p>
-          </div>
-          <button class="w3-button w3-block w3-dark-grey">
-            button that does something
-          </button>
-        </div>
-      </article>
-      <!-- container for search result cards -- col -->
-      <article class="w3-col s12 l6 w3-padding">
-        <!-- card container -->
-        <div class="w3-card-4 w3-margin-bottom">
-          <header class="w3-container w3-light-grey">
-            <!-- element for results[i].legalBusinessName -->
-            <h3 class="w3-medium">legalBusinessName</h3>
-          </header>
-          <div class="w3-container">
-            <!-- element for  -->
-            <p class="w3-small">info</p>
-            <hr />
-            <img
-              src="https://picsum.photos/60"
-              alt="icon/img"
-              class="w3-left w3-circle w3-margin-right w3-margin-bottom"
-            />
-            <p class="w3-small">
-              12345 Decker Ln.
-              <br />
-              Austin, TX
-              <br />
-              78724
-            </p>
-          </div>
-          <button class="w3-button w3-block w3-dark-grey">
-            button that does something
-          </button>
-        </div>
-      </article>
-      <!-- container for search result cards -- col -->
-      <article class="w3-col s12 l6 w3-padding">
-        <!-- card container -->
-        <div class="w3-card-4 w3-margin-bottom">
-          <header class="w3-container w3-light-grey">
-            <!-- element for results[i].legalBusinessName -->
-            <h3 class="w3-medium">legalBusinessName</h3>
-          </header>
-          <div class="w3-container">
-            <!-- element for  -->
-            <p class="w3-small">info</p>
-            <hr />
-            <img
-              src="https://picsum.photos/60"
-              alt="icon/img"
-              class="w3-left w3-circle w3-margin-right w3-margin-bottom"
-            />
-            <p class="w3-small">
-              12345 Decker Ln.
-              <br />
-              Austin, TX
-              <br />
-              78724
-            </p>
-          </div>
-          <button class="w3-button w3-block w3-dark-grey">
-            button that does something
-          </button>
-        </div>
-      </article>
-      <!-- container for search result cards -- col -->
-      <article class="w3-col s12 l6 w3-padding">
-        <!-- card container -->
-        <div class="w3-card-4 w3-margin-bottom">
-          <header class="w3-container w3-light-grey">
-            <!-- element for results[i].legalBusinessName -->
-            <h3 class="w3-medium">legalBusinessName</h3>
-          </header>
-          <div class="w3-container">
-            <!-- element for  -->
-            <p class="w3-small">info</p>
-            <hr />
-            <img
-              src="https://picsum.photos/60"
-              alt="icon/img"
-              class="w3-left w3-circle w3-margin-right w3-margin-bottom"
-            />
-            <p class="w3-small">
-              12345 Decker Ln.
-              <br />
-              Austin, TX
-              <br />
-              78724
-            </p>
-          </div>
-          <button class="w3-button w3-block w3-dark-grey">
-            button that does something
-          </button>
-        </div>
-      </article>
-      <!-- container for search result cards -- col -->
-      <article class="w3-col s12 l6 w3-padding">
-        <!-- card container -->
-        <div class="w3-card-4 w3-margin-bottom">
-          <header class="w3-container w3-light-grey">
-            <!-- element for results[i].legalBusinessName -->
-            <h3 class="w3-medium">legalBusinessName</h3>
-          </header>
-          <div class="w3-container">
-            <!-- element for  -->
-            <p class="w3-small">info</p>
-            <hr />
-            <img
-              src="https://picsum.photos/60"
-              alt="icon/img"
-              class="w3-left w3-circle w3-margin-right w3-margin-bottom"
-            />
-            <p class="w3-small">
-              12345 Decker Ln.
-              <br />
-              Austin, TX
-              <br />
-              78724
-            </p>
-          </div>
-          <button class="w3-button w3-block w3-dark-grey">
-            button that does something
-          </button>
-        </div>
-      </article>
-      <!-- container for search result cards -- col -->
-      <article class="w3-col s12 l6 w3-padding">
-        <!-- card container -->
-        <div class="w3-card-4 w3-margin-bottom">
-          <header class="w3-container w3-light-grey">
-            <!-- element for results[i].legalBusinessName -->
-            <h3 class="w3-medium">legalBusinessName</h3>
-          </header>
-          <div class="w3-container">
-            <!-- element for  -->
-            <p class="w3-small">info</p>
-            <hr />
-            <img
-              src="https://picsum.photos/60"
-              alt="icon/img"
-              class="w3-left w3-circle w3-margin-right w3-margin-bottom"
-            />
-            <p class="w3-small">
-              12345 Decker Ln.
-              <br />
-              Austin, TX
-              <br />
-              78724
-            </p>
-          </div>
-          <button class="w3-button w3-block w3-dark-grey">
-            button that does something
-          </button>
-        </div>
-      </article>
+
       <!-- example card end -->
-    
-    <section class="w3-container" id="mission">
-      <p>
-        <!-- mission statement -->
-        Wo-Ve-Mi is a website created by a diverse group of web designers with the goal of providing a  way for people to search for women, veteran, and minority owned businesses in order to close the racial wealth gap, strengthen local economies, foster job creation, celebrate culture, honor our veterans, and hold larger companies accountable by giving them local competition for goods and services.  Supporting local businesses is good for the environment, good for the economy, and provides local job creation.
-      </p>
-    </section>
+
+      <section
+        id="mission"
+        class="w3-col s12 w3-margin-top w3-margin-bottom w3-white"
+      >
+        <p>
+          <!-- mission statement -->
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit debitis
+          quasi labore officiis tempore perferendis voluptatibus assumenda sint
+          ad animi? Deserunt nam dolores alias rem possimus consectetur
+          repellendus suscipit quae!
+        </p>
+      </section>
+
+      <!-- about us -->
+      <section
+        id="about"
+        class="w3-col w3-margin-top w3-margin-bottom w3-light-grey"
+      >
+        <header class="w3-margin-bottom">
+          <h3 class="w3-center">
+            Click on each team member to see their Github Profile
+          </h3>
+        </header>
+        <article class="w3-col s4 m2 w3-center">
+          <a href="https://github.com/gacx89"
+            ><img
+              class="w3-circle"
+              width="75px"
+              src="https://avatars2.githubusercontent.com/u/44916397?s=460&u=440125b5ba31cc620d85262e972997952f142b96&v=4"
+              alt="Garrett"
+          /></a>
+          <p>Garrett</p>
+        </article>
+        <article class="w3-col s4 m2 w3-center">
+          <a href="https://github.com/JenniferFadare"
+            ><img
+              class="w3-circle"
+              width="75px"
+              src="https://avatars2.githubusercontent.com/u/70460125?s=460&v=4"
+              alt="Jennifer"
+          /></a>
+          <p>Jennifer</p>
+        </article>
+        <article class="w3-col s4 m2 w3-center w3-circle">
+          <a href="https://github.com/blackutcoffee"
+            ><img
+              class="w3-circle"
+              width="75px"
+              src="https://avatars0.githubusercontent.com/u/67117757?s=400&u=d471a65dd6501eda2c19a196920b4ec8e5cc76f4&v=4"
+              alt="Lafon"
+          /></a>
+          <p>Lafon</p>
+        </article>
+        <article class="w3-col s4 m2 w3-center">
+          <a href="https://github.com/CaseyDeriso"
+            ><img
+              class="w3-circle"
+              width="75px"
+              src="https://avatars3.githubusercontent.com/u/68764959?s=460&u=0d9589bc609757026c8017086383c6d1aea431c6&v=4"
+              alt="Obi"
+          /></a>
+          <p>Casey</p>
+        </article>
+        <article class="w3-col s4 m2 w3-center">
+          <a href="https://github.com/ChristianKrantz11"
+            ><img
+              class="w3-circle"
+              width="75px"
+              src="https://avatars3.githubusercontent.com/u/71040671?s=400&u=60a95fc09f036c5882af48ec41cdf0949ed9f291&v=4"
+              alt="Christian"
+          /></a>
+          <p>Christian</p>
+        </article>
+        <article class="w3-col s4 m2 w3-center">
+          <a href="https://github.com/oezekwe"
+            ><img
+              class="w3-circle"
+              width="75px"
+              src="https://avatars0.githubusercontent.com/u/14321730?s=460&v=4"
+              alt="Obi"
+          /></a>
+          <p>Obi</p>
+        </article>
+      </section>
     </main>
 
-    <footer class="w3-row">
+    <footer id="footer" class="w3-row">
       <h2 class="w3-large">🔧 Built by Team Formul8rs</h2>
     </footer>
     <!-- Script links -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./Assets/JS/script.js"></script>
   </body>
