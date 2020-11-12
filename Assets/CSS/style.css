@@ -15,7 +15,12 @@
 #header {
     width: 100%;
     background-image: url(../images/wovemiBanner.png);
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--primary-background);
+    height: 425px;
+    
 }
 
 body {
