@@ -69,9 +69,14 @@ var createMarkers = function (data) {
   markers = [];
   // Loop thru list of coordinates and draw marker at each location with address as pop-up
   for (var i = 0; i < coordinates.length; i++) {
-    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
-      data.results[i].legalBusinessName
+    var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+      `${data.results[i].legalBusinessName} <br /> ${
+        data.results[i].samAddress.line1
+      } <br /> ${data.results[i].samAddress.city.toLowerCase()}, ${
+        data.results[i].samAddress.stateOrProvince
+      } <br /> ${data.results[i].samAddress.zip}`
     );
+
     var marker = new mapboxgl.Marker()
       .setLngLat(coordinates[i])
       .setPopup(popup)
