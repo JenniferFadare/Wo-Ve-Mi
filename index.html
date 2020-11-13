@@ -19,19 +19,19 @@
     <header class="w3-margin-bottom" id="header">
       <div class="">
         <!-- branding -->
-        <a href="#" class="w3-bar-item w3-button"
-          ><h2 class="w3-large">Wo-Ve-Mi</h2></a
-        >
+        <a href="#" class="w3-bar-item w3-button w3-hover-pink">
+          <h2 class="w3-large">Wo-Ve-Mi</h2>
+        </a>
         <!-- navigation -->
-        <a href="#about" class="w3-bar-item w3-button w3-right"
-          ><h2 class="w3-medium">About Us</h2></a
-        >
-        <a href="#mission" class="w3-bar-item w3-button w3-right"
-          ><h2 class="w3-medium">Mission</h2></a
-        >
+        <a href="#about" class="w3-bar-item w3-button w3-right w3-hover-pink"
+          ><h2 class="w3-medium">About Us</h2>
+        </a>
+        <a href="#mission" class="w3-bar-item w3-button w3-right w3-hover-pink"
+          ><h2 class="w3-medium">Mission</h2>
+        </a>
       </div>
     </header>
-    <main>
+
       <!-- container for search form -- col -->
       <section
         class="w3-container w3-col s12 w3-margin-bottom w3-white"
@@ -112,16 +112,15 @@
         id="map"
         style="height: 450px"
       >
-        <!-- Mapbox GL JS will put map inside this div -->
       </section>
-
-      <!-- example card start -->
-
-      <!-- example card end -->
-    </main>
+   
 
     <section id="mission">
-      <p>
+      <div class="section-title">
+        <h2> About Us </h2>
+      </div>
+      <div>
+        <p>
         <!-- mission statement -->
         Wo-Ve-Mi is a website created by a diverse group of web designers with
         the goal of providing a way for people to search for women, veteran, and
@@ -131,22 +130,21 @@
         local competition for goods and services. Supporting local businesses is
         good for the environment, good for the economy, and provides local job
         creation.
-      </p>
+        </p>
+      </div>
     </section>
 
     <!-- about us -->
-    <section
-      id="about"
-      class="w3-col w3-margin-top w3-margin-bottom w3-light-grey"
-    >
-      <header class="w3-margin-bottom">
-        <h3 class="w3-center">
+    <section id="about" class="w3-col w3-margin-top w3-margin-bottom">
+      <div>
+        <h3 class="w3-center w3-text-white">
           Click on each team member to see their Github Profile
         </h3>
-      </header>
+      </div>
       <article class="w3-col s4 m2 w3-center">
-        <a href="https://github.com/gacx89"
-          ><img
+        <a href="https://github.com/gacx89">
+        </a>
+          <img
             class="w3-circle"
             width="75px"
             src="https://avatars2.githubusercontent.com/u/44916397?s=460&u=440125b5ba31cc620d85262e972997952f142b96&v=4"
@@ -206,8 +204,8 @@
       </article>
     </section>
 
-    <footer id="page-footer" class="w3-container">
-      <h2 class="w3-large">🔧 Built by Team Formul8rs</h2>
+    <footer id="footer">
+      <h2 class="w3-large w3-text-white">🔧 Built by Team Formul8rs</h2>
     </footer>
 
     <!-- modal -->

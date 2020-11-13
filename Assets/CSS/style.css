@@ -12,6 +12,19 @@
   --font-color: navy;
 }
 
+
+.section-title {
+  font-size: 48px;
+  color: navy;
+  border-bottom: 3px solid;
+  padding-bottom: 20px;
+  text-align: center;
+  margin: 0 auto 35px auto;
+  width: 50%;   
+}
+
+
+
 #header {
     width: 100%;
     background-image: url(../images/wovemiBanner.png);
@@ -27,9 +40,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+
+footer {
+  background-color: var(--veteran-color);
+  font-weight: bold;
+  text-align: center;
+}
+
 /* w3 CSS overrides */
 
-.center-block-element {
+/*.center-block-element {
   float: none;
   margin: 0 auto;
-}
+} */
