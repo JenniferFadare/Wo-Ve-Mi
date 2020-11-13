@@ -16,7 +16,7 @@
 
 ## Deployed Project:
 
-[Link to deployed project!](https://jenniferfadare.github.io/project_1/)
+[Link to deployed project!](https://jenniferfadare.github.io/Wo-Ve-Mi/)
 
 ## How it looks:
 
