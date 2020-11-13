@@ -23,6 +23,12 @@
   width: 50%;   
 }
 
+#mission p {
+  padding: 15px;
+  height: 200px;
+  text-align: center;
+  font-size: large;
+}
 
 
 #header {
@@ -54,3 +60,10 @@ footer {
   float: none;
   margin: 0 auto;
 } */
+
+@media screen and (max-width: 1000px) {
+  #map {
+    width: 100%;
+
+  }
+}
