@@ -12,17 +12,18 @@
   --font-color: navy;
 }
 
+
 .section-title {
-  font-size: 30px;
-  border-right: none;
+  font-size: 48px;
+  color: navy;
   border-bottom: 3px solid;
-  width: 200px;
-  display: center;
+  padding-bottom: 20px;
+  text-align: center;
+  margin: 0 auto 35px auto;
+  width: 50%;   
 }
 
-.section-title h2 {
-  display: center;
-}
+
 
 #header {
     width: 100%;
